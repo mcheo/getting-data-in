@@ -12,7 +12,7 @@ Steps:
 
 1. We will use [kind](https://kind.sigs.k8s.io/docs/user/quick-start/) to create a demo cluster.
 ```
-kind create cluster --config kind-cluster.yaml --name demo_with_splunk
+kind create cluster --config kind-cluster.yaml --name demo-with-splunk
 ```
 
 2. Deploy fluentbit
@@ -42,7 +42,7 @@ a. Settings -> Date Inputs -> HTTP Event Collector -> Add New<br/>
     ii. Preferable create a separate new Index for this testing. eg: fluentbit
     iii. After completion, copy the "Token Value". We will need to update fluenbit configmap
 
-6. Update Fluentbi configmap
+6. Update Fluentbit configmap
 ```
 kubectl edit cm -n fluentbit
 
@@ -65,5 +65,5 @@ index="fluentbit"
 
 9. Delete kind cluster after testing
 ```
-kind delete cluster --name demo_with_splunk
+kind delete cluster --name demo-with-splunk
 ```
