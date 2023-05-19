@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: splunk-deployment
+  labels:
+    app: splunk
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: splunk
+  template:
+    metadata:
+      labels:
+        app: splunk
+    spec:
+      containers:
+      - name: splunk
+        image: splunk/splunk:latest
+        ports:
+        - containerPort: 8000
+        - containerPort: 8088
+        - containerPort: 8089
+        env:
+        - name: SPLUNK_PASSWORD
+          value: admin1234
+        - name: SPLUNK_START_ARGS
+          value: --accept-license
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: splunk
+spec:
+  selector:
+    app: splunk
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8000
+      targetPort: 8000
+    - name: hec
+      protocol: TCP
+      port: 8088
+      targetPort: 8088
+    - name: splunkd
+      protocol: TCP
+      port: 8089
+      targetPort: 8089
