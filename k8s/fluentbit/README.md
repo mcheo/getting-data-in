@@ -62,3 +62,8 @@ kubectl apply -f counter.yaml
 ```
 index="fluentbit"
 ```
+
+9. Delete kind cluster after testing
+```
+kind delete cluster --name demo_with_splunk
+```
