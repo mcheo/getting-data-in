@@ -55,7 +55,7 @@ Open browser and visit to https://localhost Perform and browsing to generate som
 
 11. Once done testing, delete the k8s Kind cluster
 ```
-kind delete clusters --name rum-testing
+kind delete cluster --name rum-testing
 ```
 
 ### Troubleshooting:
