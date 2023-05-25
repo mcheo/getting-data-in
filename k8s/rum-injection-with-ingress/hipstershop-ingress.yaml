@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hipstershop-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      proxy_set_header Accept-Encoding "";
+      sub_filter '<head>' '<head><script src="https://cdn.signalfx.com/o11y-gdi-rum/latest/splunk-otel-web.js" crossorigin="anonymous"></script>
+        <script>
+          SplunkRum.init({
+          beaconUrl: "https://rum-ingest.us1.signalfx.com/v1/rum",
+          rumAuth: "<redated>",
+          app: "hipstershop",
+          environment: "dev"
+        });
+        </script>';
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: frontend
+            port:
+              number: 8080
