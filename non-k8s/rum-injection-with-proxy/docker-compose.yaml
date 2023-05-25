@@ -1,0 +1,12 @@
+version: '3'
+services:
+    juiceshop: 
+        image: bkimminich/juice-shop
+        expose:
+         - "3000"
+    nginx: 
+        image: nginx 
+        volumes:
+        - ./conf.d:/etc/nginx/conf.d
+        ports:
+            - "80:80"
