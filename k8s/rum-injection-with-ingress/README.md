@@ -20,7 +20,7 @@ Note: Remember to replace the "<version>" tag in the URL with relevant version. 
 kind create cluster --name rum-testing --config=kind-cluster.yaml
 ```
 
-4. Deploy Hipstership
+4. Deploy Hipstershop
 ```
 kubectl apply -f hipstershop.yaml
 ```
@@ -36,7 +36,18 @@ kubectl get pods --all-namespaces
 ```
 
 7. Update Ingress file<br/>
-In the hipstershop-ingress.yaml, update the info taken from Step 2 above.
+Edit the hipstershop-ingress.yaml, update the info taken from Step 2 above.
+```
+      sub_filter '</head>' '<script src="https://cdn.signalfx.com/o11y-gdi-rum/latest/splunk-otel-web.js" crossorigin="anonymous"></script>
+        <script>
+          SplunkRum.init({
+          beaconUrl: "https://rum-ingest.us1.signalfx.com/v1/rum",
+          rumAuth: "<redacted>",
+          app: "hipstershop",
+          environment: "dev"
+        });
+        </script></head>';
+```
 
 
 8. Deploy Ingress resource
