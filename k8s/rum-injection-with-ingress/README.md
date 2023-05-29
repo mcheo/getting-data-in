@@ -53,7 +53,7 @@ Edit the hipstershop-ingress.yaml, update the info taken from Step 2 above.
 8. Deploy Ingress resource
 ```
 #In this ingress resource, we do not specify host name for ease fo testing. In production, you are likely to use appropriate host name
-kubectl deploy -f hipstershop-ingress.yaml
+kubectl apply -f hipstershop-ingress.yaml
 ```
 
 9. Browse the hipsstershop app
