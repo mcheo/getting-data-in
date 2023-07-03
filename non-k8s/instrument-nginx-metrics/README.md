@@ -9,7 +9,7 @@
     ```
 
 2. Install Splunk Otel Collector in Ubuntu
-    https://docs.splunk.com/Observability/gdi/opentelemetry/install-linux.html
+    <br/>https://docs.splunk.com/Observability/gdi/opentelemetry/install-linux.html
 
     Replace the following variables for your environment:
 
