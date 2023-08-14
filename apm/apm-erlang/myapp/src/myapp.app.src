@@ -1,0 +1,22 @@
+{application, myapp,
+ [{description, "An OTP application"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {mod, {myapp_app, []}},
+  {applications,
+   [kernel,
+    stdlib,
+    opentelemetry_api,
+    opentelemetry,
+    opentelemetry_exporter,
+    opentelemetry_cowboy,
+    cowboy,
+    tls_certificate_check
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {licenses, ["Apache-2.0"]},
+  {links, []},
+  {build_tools, ["rebar3"]}
+ ]}.

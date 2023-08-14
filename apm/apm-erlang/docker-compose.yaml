@@ -1,0 +1,15 @@
+version: '3'
+services:
+    erlang-app: 
+        image: erlang:22.3.4 
+        stdin_open: true
+        tty: true
+        ports:
+        - "8080:8080"
+        volumes:
+        - ./myapp:/home/myapp/
+    splunk-otel-collector:
+        image: quay.io/signalfx/splunk-otel-collector:0.59.1
+        environment:
+        - SPLUNK_ACCESS_TOKEN=<redacted>
+        - SPLUNK_REALM=<redacted>

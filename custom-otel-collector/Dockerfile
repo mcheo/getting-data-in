@@ -20,4 +20,3 @@ COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certifica
 COPY --from=build /tmp/dist/otelcol-custom /otelcontribcol
 
 ENTRYPOINT ["/otelcontribcol"]
-
