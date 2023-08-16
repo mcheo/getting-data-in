@@ -8,6 +8,7 @@ services:
         - "8080:8080"
         volumes:
         - ./myapp:/home/myapp/
+        - ./myapp2:/home/myapp2/
     splunk-otel-collector:
         image: quay.io/signalfx/splunk-otel-collector:0.59.1
         environment:
